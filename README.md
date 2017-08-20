@@ -17,3 +17,8 @@ Instalar la gema localmente:
 Instalar la gema desde ruby Gems:
   - https://rubygems.org/gems/moneygm
   - gem install moneygm
+  - ingresar a irb
+  - require 'moneygm'
+  - Inicializar un obj money. Ej. fifty_eur = Money.new(50, 'EUR')
+  - Iniciar proceso de pruebas (El que se encuenta en el archivo con los requerimientos)
+
