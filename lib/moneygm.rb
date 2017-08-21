@@ -16,14 +16,7 @@ class Money
   def convert_to(currency_to_convert)
     obj_copy = self.dup #copio el objeto
     return obj_copy if self.conversion[currency_to_convert].nil? || currency_to_convert == self.currency
-    case currency_to_convert
-      when "USD"
-        obj_copy.amount = (obj_copy.amount * obj_copy.conversion['USD']).round(2)
-      when "Bitcoin"
-        obj_copy.amount = (obj_copy.amount * obj_copy.conversion['Bitcoin']).round(2)
-      when "EUR"
-        obj_copy.amount =  (obj_copy.amount * obj_copy.conversion['EUR']).round(2)
-    end
+    obj_copy.amount = (obj_copy.amount * obj_copy.conversion[currency_to_convert]).round(2)
     obj_copy.currency = currency_to_convert
     return obj_copy
   end
@@ -69,15 +62,15 @@ class Money
 
   # Solo se consideran los operadores == , >, <
   def == (obj)
-    value = self.convert_to('EUR').amount == obj.convert_to('EUR').amount ? true : false
+    self.convert_to('EUR').amount == obj.convert_to('EUR').amount ? true : false
   end
 
   def > (obj)
-    value = self.convert_to('EUR').amount > obj.convert_to('EUR').amount ? true : false
+    self.convert_to('EUR').amount > obj.convert_to('EUR').amount ? true : false
   end
 
   def < (obj)
-    value = self.convert_to('EUR').amount < obj.convert_to('EUR').amount ? true : false
+    self.convert_to('EUR').amount < obj.convert_to('EUR').amount ? true : false
   end
 end
 
